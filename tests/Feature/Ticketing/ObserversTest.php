@@ -12,18 +12,8 @@ use Kurt\Modules\Events\Ticketing\Enums\TicketStatus;
 use Kurt\Modules\Events\Ticketing\Events\OrderPaid;
 use Kurt\Modules\Events\Ticketing\Models\Order;
 use Kurt\Modules\Events\Ticketing\Models\Ticket;
-use Kurt\Modules\Events\Ticketing\Observers\OrderObserver;
-use Kurt\Modules\Events\Ticketing\Observers\TicketObserver;
 
-beforeEach(function () {
-    Ticket::observe(TicketObserver::class);
-    Order::observe(OrderObserver::class);
-});
-
-afterEach(function () {
-    Ticket::flushEventListeners();
-    Order::flushEventListeners();
-});
+// Observers are registered by EventsServiceProvider; no manual setup needed.
 
 it('TicketObserver increments tickets_sold_count when ticket is created issued', function () {
     $event = CatalogEvent::factory()->create(['tickets_sold_count' => 0]);
