@@ -6,9 +6,12 @@ namespace Kurt\Modules\Events\Tests\Stubs;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 final class StubUser extends Model implements Authenticatable
 {
+    use Notifiable;
+
     protected $table = 'users';
 
     protected $guarded = [];
