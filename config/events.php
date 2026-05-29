@@ -1,6 +1,13 @@
 <?php
 
 declare(strict_types=1);
+use Kurt\Modules\Events\Eligibility\Evaluators\AgeMaxEvaluator;
+use Kurt\Modules\Events\Eligibility\Evaluators\AgeMinEvaluator;
+use Kurt\Modules\Events\Eligibility\Evaluators\CustomRuleEvaluator;
+use Kurt\Modules\Events\Eligibility\Evaluators\DocumentEvaluator;
+use Kurt\Modules\Events\Eligibility\Evaluators\FreeFormEvaluator;
+use Kurt\Modules\Events\Eligibility\Evaluators\GenderEvaluator;
+use Kurt\Modules\Events\Eligibility\Evaluators\GroupMembershipEvaluator;
 
 return [
     'currency' => env('EVENTS_DEFAULT_CURRENCY', 'USD'),
@@ -67,13 +74,13 @@ return [
 
     'requirements' => [
         'evaluators' => [
-            'age_min' => \Kurt\Modules\Events\Eligibility\Evaluators\AgeMinEvaluator::class,
-            'age_max' => \Kurt\Modules\Events\Eligibility\Evaluators\AgeMaxEvaluator::class,
-            'document' => \Kurt\Modules\Events\Eligibility\Evaluators\DocumentEvaluator::class,
-            'group_membership' => \Kurt\Modules\Events\Eligibility\Evaluators\GroupMembershipEvaluator::class,
-            'gender' => \Kurt\Modules\Events\Eligibility\Evaluators\GenderEvaluator::class,
-            'free_form_question' => \Kurt\Modules\Events\Eligibility\Evaluators\FreeFormEvaluator::class,
-            'custom_rule' => \Kurt\Modules\Events\Eligibility\Evaluators\CustomRuleEvaluator::class,
+            'age_min' => AgeMinEvaluator::class,
+            'age_max' => AgeMaxEvaluator::class,
+            'document' => DocumentEvaluator::class,
+            'group_membership' => GroupMembershipEvaluator::class,
+            'gender' => GenderEvaluator::class,
+            'free_form_question' => FreeFormEvaluator::class,
+            'custom_rule' => CustomRuleEvaluator::class,
         ],
         'group_resolver' => null,
     ],
