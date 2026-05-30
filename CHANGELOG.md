@@ -4,6 +4,11 @@ All notable changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-05-30
+
+### Fixed
+- Migrations now publish correctly via `vendor:publish --tag=modules-events-migrations`. The previous bare-name `hasMigrations()` list pointed at non-existent source paths (real files are timestamp-prefixed). Switched to `discoversMigrations()`.
+
 ## [1.0.0] - 2026-05-29
 
 ### Added
